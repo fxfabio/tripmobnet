@@ -1,2 +1,4 @@
 # tripmobnet
-Open access data and code for TRip mobility network
+Open access data and code for Trip mobility network
+
+
