@@ -9,13 +9,12 @@ function [k_degree , C_cluster,C_clusterx]=mc_ClusterCoeffDeg(A,binnum,author)
 %            'Fardet'  - FanIn-CC as in Fardet-Levina (2021),doi:10.1103/PhysRevResearch.3.043124
 %
 %   Note:   All weights must be between 0 and 1.
-%
+%@F.Vanni2023 
 if nargin<3
     author='Fagiolo';
 end
 
-%W=weight_conversionBCT(transpose(A), 'normalize'); % traspongo per fare ispezione in-degree
-W=transpose(A)./max(abs(A(:)));    % scale by maximal weight
+W=transpose(A)./max(abs(A(:)));    % normalized scale by maximal weight
 %W=A./max(sum(A,2));
 
 % (CRin1)Fagiolo 2007 o (CRin2) Clemente 2017 o (CRin3)  Fardet 2021 
@@ -34,17 +33,9 @@ C=Cin;
 k_degree= sum(A,2); % in degree
 %k_degree= Kin;
 max(k_degree)
-%x=unique(k_degree);
-
 
 x=unique(k_degree);
 
-%k_bin=(1:length(k_degree));
-
-%k_bin=linspace(min(x),max(x),binsize);
-
-
-%k_bin=(min(x):binsize:max(x));
 k_bin=linspace(min(x),max(x),binnum);
 
    cc=zeros(length(k_bin),1); 
@@ -64,12 +55,9 @@ C_cluster(C_cluster==0)=NaN;
 C_clusterx=ccx';
 
 
-C_clusterx(C_clusterx==0)=NaN;
+C_clusterx(C_clusterx==0)=NaN; % excluding node with clustering zero 
 C_clusterx(~isfinite(C_clusterx))=NaN;
 
-%ix=~isnan(C_clusterx);
-%k_degree=k_degree(ix);
-%C_clusterx=C_clusterx(ix);
 
 function [C,Cin,Kin,CR_in1,CR_in2,CR_in3]=mc_clustering_coef(W)
 %CLUSTERING_COEF_WD     Fan-in Clustering coefficient
@@ -83,7 +71,7 @@ function [C,Cin,Kin,CR_in1,CR_in2,CR_in3]=mc_clustering_coef(W)
 %   Output:     C,      clustering coefficient vector
 %
 %
-%   2022: modificato da me https://rdrr.io/cran/DirectedClustering/src/R/ClustF.R
+%   2022: modification of https://rdrr.io/cran/DirectedClustering/src/R/ClustF.R
 %   The weighted modification is as follows:
 %   - The numerator: adjacency matrix is replaced with weights matrix ^ 1/3
 %   - The denominator: no changes from the binary version

@@ -1,7 +1,7 @@
 function [A,Fxy]=MC_HiddenVariableGraph_main(N,T,multi)
 % Monte Carlo simulation of hidden variable mobility multi-graph model
 % with multilink procedure or not in string 'multi'.
-% @FVanni Gennaio 2023
+% @FVanni 2023
 
 %AD= 10; % average degree
 %N=300; % number of nodes

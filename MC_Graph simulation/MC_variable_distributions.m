@@ -11,14 +11,14 @@ function [Fd]=MC_variable_distributions(n,varargin)
 %  varargin -> decide the distribution of the fitness variables (assets size of banks)
 %
 %OUTPUT
-%        Fd = the size distribution from the fitness distribution
+%        Fd = the size distribution from the hidden variable distributions
 % Example:
-%        fitness_density_MFa(n,'powerlaw',mu);
-%        fitness_density_MFa(n,'xmin',xmin,'powerlaw',mu);
-%        fitness_density_MFa(n,'xmin',xmin,'truncated',mu,xmax);
-%        fitness_density_MFa(n,'xmin',xmin,'powercutoff',mu,lambda);
-%        fitness_density_MFa(n,'exponential',lambda);
-%        fitness_density_MFa(n,'stretched',lambda,bs);
+%        MC_variable_distributions(n,'powerlaw',mu);
+%        MC_variable_distributions(n,'xmin',xmin,'powerlaw',mu);
+%        MC_variable_distributions(n,'xmin',xmin,'truncated',mu,xmax);
+%        MC_variable_distributions(n,'xmin',xmin,'powercutoff',mu,lambda);
+%        MC_variable_distributions(n,'exponential',lambda);
+%        MC_variable_distributions(n,'stretched',lambda,bs);
 % FabioVanni©2015
 
 

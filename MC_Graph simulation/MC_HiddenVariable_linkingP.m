@@ -1,8 +1,7 @@
 function L=MC_HiddenVariable_linkingP(Fd,alphabeta)
-% necessita di una distribuzione di fitness per esempio
-% fitness_density_MFa.m
-%         alfabeta=[alpha beta] - the power law parameters of the linking function
+%       alfabeta=[alpha beta] - of the linking function
 % this code allows self-loop (removed in other code in the evolution)
+%%@F.Vanni2023 
 
 n=length(Fd);
 %% LINKING FUNCTION
