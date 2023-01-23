@@ -9,6 +9,10 @@ function [k_degree , C_cluster,C_clusterx]=mc_ClusterCoeffDeg(A,binnum,author)
 %            'Fardet'  - FanIn-CC as in Fardet-Levina (2021),doi:10.1103/PhysRevResearch.3.043124
 %
 %   Note:   All weights must be between 0 and 1.
+% Output:
+%       k_degree= binned strength (degree) grouped in binnum number of bins
+%       C_cluster= Cluster coeeficient for nodes of a certain strength (normalized to 1) 
+%  
 %@F.Vanni2023 
 if nargin<3
     author='Fagiolo';
@@ -98,7 +102,7 @@ CYC3=K.*(K-1)-2*diag(A^2);	%number of all possible 3-cycles
 C=cyc3./CYC3;               % TOTAL clustering coefficient
 
 
-%% 3 types of In-CCs
+%% other 3 types of In-CCs
 %Sin=(W.').*W.^2;
 
 %% Fagiolo
